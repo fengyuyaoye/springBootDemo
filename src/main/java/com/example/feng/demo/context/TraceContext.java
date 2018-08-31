@@ -3,9 +3,14 @@ package com.example.feng.demo.context;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.example.feng.demo.util.MD5Util;
 
 public class TraceContext {
+
+    private Logger logger = LoggerFactory.getLogger(TraceContext.class);
 
     private String traceId;
 
@@ -17,7 +22,7 @@ public class TraceContext {
                 String currentIpAddress = InetAddress.getByName(hostName).getHostAddress();
                 traceId = MD5Util.MD5Encode(Thread.currentThread().getName() + currentIpAddress + System.nanoTime());
             } catch (UnknownHostException e) {
-                e.printStackTrace();
+                logger.error("TraceContext.getTraceId error: ", e);
             }
 
         }

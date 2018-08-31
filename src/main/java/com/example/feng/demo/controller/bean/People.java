@@ -4,6 +4,7 @@ public class People {
 
     private String name;
     private int age;
+    private String traceId;
 
     public String getName() {
         return name;
@@ -19,6 +20,14 @@ public class People {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getTraceId() {
+        return traceId;
+    }
+
+    public void setTraceId(String traceId) {
+        this.traceId = traceId;
     }
 
 }
